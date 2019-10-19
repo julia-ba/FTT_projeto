@@ -1,0 +1,47 @@
+<h1 class="page-title">Lista de Carros</h1>
+
+<button class="btn btn-primary m-3" routerLink="/carro/novo">
+  Cadastrar
+</button>
+
+<div *ngIf="!carros.length" >
+  Nenhum item inserido
+</div>
+
+<table *ngIf="carros.length" class="table table-bordered">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Fabricante</th>
+      <th>Modelo</th>
+      <th>Versão</th>
+      <th>Descrição</th>
+      <th>Cor</th>
+      <th>Valor</th>
+      <th>Nome da Garagem</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let carro of carros">
+      <td><button class="btn btn-link"[routerLink]="['/carro/visualizar', carro.id]">
+        {{ carro.id }}</button></td>
+      <td>{{ carro.fabricante }}</td>
+      <td>{{ carro.modelo }}</td>
+      <td>{{ carro.versao }}</td>
+      <td>{{ carro.descricao }}</td>
+      <td>{{ carro.cor }}</td>
+      <td>{{ carro.valor }}</td>
+      <td><button class="btn btn-link">{{ carro.garagem.nome }}</button></td>
+      <td>
+        <button class="btn btn-link" [routerLink]="['/carro/editar', carro.id]">
+          Editar
+        </button>
+
+        <button class="btn btn-link" (click)="onDelete(carro.id)">
+          Deletar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,30 @@
+<h1 class="page-title">Garagem</h1>
+
+<button class="btn btn-primary m-3" routerLink="/garagem/novo">
+  Cadastrar
+</button>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      
+      <th>Nome</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let garagem of garagens">
+      <td><button class="btn btn-link"[routerLink]="['/garagem/visualizar', garagem.id]">
+        {{ garagem.nome }}</button></td>
+      <td>
+        <button class="btn btn-link" [routerLink]="['/garagem/editar', garagem.id]">
+          Editar
+        </button>
+
+        <button class="btn btn-link" (click)="onDelete(garagem.id)">
+          Deletar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
