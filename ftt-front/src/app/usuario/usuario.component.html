@@ -1,81 +1,89 @@
 <div class="container">
   <div class="row">
-      <div class="col-sm-12">
-          <h1>Cadastro</h1>
-      </div>
-  </div>
-  <div id="form">            
-  <form [formGroup]="usuarioForm" (submit)="onSubmit(usuarioForm.value)">
-      <div class="form-group row">
-          <div class="form-group col-md">
-              <label for="nome">Nome</label>
-              <input placeholder="Primeiro nome" id="nome" type="text" name="nome" 
-                  class="form-control" id="nome" formControlName="nome" />
-                  <div *ngIf="nome.errors">
-                      kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-                  </div>
-          </div>
-          <div class="form-group col-md">
-          <label for="sobrenome">Sobrenome </label>
-          <input placeholder="Sobrenome" type="text" name="sobrenome" 
-              class="form-control" id="sobrenome" formControlName="sobrenome" />
-          </div>
-      </div>
-      <div class="form-group row">
-          <div class="form-group col-md">
-              <label for="cpfCnpj">CPF/CNPJ</label>
-              <input placeholder="CPF/CNPJ" type="text" name="cpfCnpj" 
-                  class="form-control" id="cpfCnpj" formControlName="cpfCnpj" />
-          </div>
-          
-          <div class="form-group col-md">
-              <label for="telefone">Telefone</label>
-              <input placeholder="Telefone" type="tel" name="telefone" 
-                  class="form-control" id="telefone" formControlName="telefone" />                        
-          </div>
-          
-          <div class="form-group col-md">
-              <label for="dataNascimento">Data de nascimento</label>
-              <input placeholder="Data de nascimento"  app-restrict-input="date" type="date" 
-                  name="dataNascimento" class="form-control" id="dataNascimento" formControlName="dataNascimento" />
-          </div>
-      </div>
-      <div class="form-group row">
-              <div class="form-group col-md">
-                  <label for="cep">CEP</label>
-                  <input placeholder="CEP" type="text" name="cep" 
-                      class="form-control" id="cep" formControlName="cep" />
-              </div>
-              
-              <div class="form-group col-md">
-                      <label for="cidade">Cidade</label>
-                      <input placeholder="Cidade" type="text" name="cidade" 
-                      class="form-control" id="cidade" formControlName="cidade" />
-              </div>
-              <div class="form-group col-md">
-                  <label for="estado">Estado</label>
-                  <input placeholder="Estado" type="text" name="estado"
-                      class="form-control" id="estado" formControlName="estado" >
-              </div>
-          </div>
-      <div class="form-group row">
-          <div class="form-group col-md-7">
-              <label for="rua">Rua</label>
-              <input placeholder="Rua" type="text" name="rua" 
-                  class="form-control" id="rua" formControlName="rua" />
-          </div>
-          <div class="form-group col-md-2">
-                  <label for="numero">Número</label>
-                  <input placeholder="Número" type="text" name="numero" 
-                  class="form-control" id="numero" formControlName="numero" />
-          </div>
-          <div class="form-group col-md">
-            <label for="bairro">Bairro</label>
-            <input placeholder="Bairro" type="text" name="bairro" 
-            class="form-control" id="bairro" formControlName="bairro" />
+    <div class="col-sm-12">
+      <h1>Cadastro</h1>
     </div>
+  </div>
+  <div id="form">
+    <form [formGroup]="usuarioForm" (submit)="onSubmit(usuarioForm.value)">
+      <div class="form-group row">
+        <div class="form-group col-md">
+          <label for="nome">Nome</label>
+          <input placeholder="Primeiro nome" id="nome" type="text" name="nome"
+                 class="form-control" id="nome" formControlName="nome" />
+          <div *ngIf="usuarioForm.controls.nome.invalid && (usuarioForm.controls.nome.dirty
+                || usuarioForm.controls.nome.touched)"
+               class="alert alert-danger">
+
+            <div *ngIf="usuarioForm.controls.nome.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="usuarioForm.controls.nome.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md">
+          <label for="sobrenome">Sobrenome </label>
+          <input placeholder="Sobrenome" type="text" name="sobrenome"
+                 class="form-control" id="sobrenome" formControlName="sobrenome" />
+        </div>
       </div>
-          <button [disabled]="!usuario.invalid" type="submit" class="btn btn-outline-primary submit">Finalizar cadastro</button>
-      </form>
+      <div class="form-group row">
+        <div class="form-group col-md">
+          <label for="cpfCnpj">CPF/CNPJ</label>
+          <input placeholder="CPF/CNPJ" type="text" name="cpfCnpj"
+                 class="form-control" id="cpfCnpj" formControlName="cpfCnpj" />
+        </div>
+
+        <div class="form-group col-md">
+          <label for="telefone">Telefone</label>
+          <input placeholder="Telefone" type="tel" name="telefone"
+                 class="form-control" id="telefone" formControlName="telefone" />
+        </div>
+
+        <div class="form-group col-md">
+          <label for="dataNascimento">Data de nascimento</label>
+          <input placeholder="Data de nascimento"  app-restrict-input="date" type="date"
+                 name="dataNascimento" class="form-control" id="dataNascimento" formControlName="dataNascimento" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-md">
+          <label for="cep">CEP</label>
+          <input placeholder="CEP" type="text" name="cep"
+                 class="form-control" id="cep" formControlName="cep" />
+        </div>
+
+        <div class="form-group col-md">
+          <label for="cidade">Cidade</label>
+          <input placeholder="Cidade" type="text" name="cidade"
+                 class="form-control" id="cidade" formControlName="cidade" />
+        </div>
+        <div class="form-group col-md">
+          <label for="estado">Estado</label>
+          <input placeholder="Estado" type="text" name="estado"
+                 class="form-control" id="estado" formControlName="estado" >
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="form-group col-md-7">
+          <label for="rua">Rua</label>
+          <input placeholder="Rua" type="text" name="rua"
+                 class="form-control" id="rua" formControlName="rua" />
+        </div>
+        <div class="form-group col-md-2">
+          <label for="numero">Número</label>
+          <input placeholder="Número" type="text" name="numero"
+                 class="form-control" id="numero" formControlName="numero" />
+        </div>
+        <div class="form-group col-md">
+          <label for="bairro">Bairro</label>
+          <input placeholder="Bairro" type="text" name="bairro"
+                 class="form-control" id="bairro" formControlName="bairro" />
+        </div>
+      </div>
+      <button [disabled]="usuarioForm.invalid" type="submit" class="btn btn-outline-primary submit">Finalizar cadastro</button>
+    </form>
   </div>
 </div>

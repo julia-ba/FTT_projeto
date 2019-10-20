@@ -7,7 +7,7 @@ import { FieldComponent } from 'src/app/core/field/field.component';
   imports: [
     CommonModule
   ],
-  exports:[
+  exports: [
     FieldComponent
   ]
 })

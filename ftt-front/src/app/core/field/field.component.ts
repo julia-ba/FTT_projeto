@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, AfterContentInit, ContentChild } from '@angular/core';
-import { NgModel, FormControlName } from '@angular/forms';
+import {Component, OnInit, Input, AfterContentInit, ContentChild} from '@angular/core';
+import {NgModel, FormControlName} from '@angular/forms';
 
 @Component({
   selector: 'field',
@@ -10,18 +10,20 @@ export class FieldComponent implements OnInit {
 
   @Input() label: string;
   @Input() required: boolean;
-      
-  @ContentChild(FormControlName) input: FormControlName;
 
-  constructor() {}
+  @ContentChild(FormControlName, {static: false}) input: FormControlName;
 
-  ngOnInit() {}       
-   
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
+
   // Verifica se o componete é obrigatório
-  isRequired() {    
+  isRequired() {
     return (this.required) ? true : false;
-  }  
-  
+  }
+
   // Verifica se esta preenchido corretamente
   hasSuccess(): boolean {
     return this.input.valid && (this.input.dirty || this.input.touched);
@@ -31,7 +33,7 @@ export class FieldComponent implements OnInit {
   hasError(): boolean {
     return this.input.invalid && (this.input.dirty || this.input.touched);
   }
-  
+
   // Alterna entre as classes CSS
   optionClass() {
     return {
