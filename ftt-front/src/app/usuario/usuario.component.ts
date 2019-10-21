@@ -18,17 +18,17 @@ export class UsuarioComponent implements OnInit {
   ngOnInit() {
     this.usuarioForm = this.builder.group({
       id: [],
-      nome: ['', Validators.required, Validators.minLength(3)],
-      sobrenome: ['', Validators.required, Validators.minLength(3)],
-      dataNascimento: ['', Validators.required],
-      telefone: ['', Validators.required],
-      cpfCnpj: ['', Validators.required],
-      cep: ['', Validators.required],
-      rua: ['', Validators.required],
-      numero: ['', Validators.required],
-      bairro: ['', Validators.required],
-      cidade: ['', Validators.required],
-      estado: ['', Validators.required],
+      nome: ['', [Validators.required, Validators.minLength(3)]],
+      sobrenome: ['', [Validators.required, Validators.minLength(3)]],
+      dataNascimento: ['', [Validators.required, Validators.maxLength(8)]],
+      telefone: ['', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
+      cpfCnpj: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(14)]],
+      cep: ['', [Validators.required, Validators.maxLength(8)]],
+      rua: ['', [Validators.required, Validators.minLength(3)]],
+      numero: ['', [Validators.required, Validators.minLength(3)]],
+      bairro: ['', [Validators.required, Validators.minLength(3)]],
+      cidade: ['', [Validators.required, Validators.minLength(3)]],
+      estado: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
     }, {});
 
   }
