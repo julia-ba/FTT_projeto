@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {Usuario} from './usuario';
-import Validation from 'src/app/core/util/validation';
+// import Validation from 'src/app/core/util/validation';
 
 @Component({
   selector: 'app-usuario',
@@ -20,7 +20,7 @@ export class UsuarioComponent implements OnInit {
       id: [],
       nome: ['', [Validators.required, Validators.minLength(3)]],
       sobrenome: ['', [Validators.required, Validators.minLength(3)]],
-      dataNascimento: ['', [Validators.required, Validators.maxLength(8)]],
+      dataNascimento: ['', [Validators.required, Validators.maxLength(10)]],
       telefone: ['', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
       cpfCnpj: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(14)]],
       cep: ['', [Validators.required, Validators.maxLength(8)]],
@@ -28,11 +28,10 @@ export class UsuarioComponent implements OnInit {
       numero: ['', [Validators.required, Validators.minLength(3)]],
       bairro: ['', [Validators.required, Validators.minLength(3)]],
       cidade: ['', [Validators.required, Validators.minLength(3)]],
-      estado: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
+      estado: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]]  
     }, {});
-
+    
   }
-
   async onSubmit(usuario: Usuario) {
     if (this.usuarioForm.invalid) {
       // Valida todos os campos do formulario

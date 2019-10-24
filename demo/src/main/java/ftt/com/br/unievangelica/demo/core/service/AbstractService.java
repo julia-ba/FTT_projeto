@@ -33,4 +33,8 @@ public abstract class AbstractService<T> implements IService<T> {
         return repository.save(object);
     }
 
+    public void deleteById(long id) {
+        repository.deleteById(id);
+    }
+
 }
