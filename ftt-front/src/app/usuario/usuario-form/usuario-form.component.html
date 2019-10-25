@@ -137,7 +137,7 @@
         </div>
           
         <!-- O ENDEREÇO COMEÇA AQUI -->
-  
+        <div formGroupName="endereco">
         <div class="form-group row">   
   
           <!-- Campo do CEP -->
@@ -147,17 +147,17 @@
                    class="form-control" id="cep" formControlName="cep" />
   
           <!-- Validação do CEP --> 
-            <div *ngIf="usuarioForm.controls.cep.invalid && (usuarioForm.controls.cep.dirty
+            <div *ngIf="usuarioForm.controls.cep?.invalid && (usuarioForm.controls.cep.dirty
                   || usuarioForm.controls.cep.touched)"
                   class="alert alert-danger">
   
                   <!-- Exige o campo -->
-                  <div *ngIf="usuarioForm.controls.cep.errors.required">
+                  <div *ngIf="usuarioForm.controls.cep.errors?.required">
                     CEP is required.
                   </div>
   
                   <!-- Exige que o campo tenha no mínimo 8 caracteres -->
-                  <div *ngIf="usuarioForm.controls.cep.errors.maxlength">
+                  <div *ngIf="usuarioForm.controls.cep.errors?.maxlength">
                     CEP must be only 8 characters long.
                   </div>          
             </div>
@@ -170,17 +170,17 @@
                    class="form-control" id="cidade" formControlName="cidade" />
   
           <!-- Validação da Cidade -->
-            <div *ngIf="usuarioForm.controls.cidade.invalid && (usuarioForm.controls.cidade.dirty
+            <div *ngIf="usuarioForm.controls.cidade?.invalid && (usuarioForm.controls.cidade.dirty
                   || usuarioForm.controls.cidade.touched)"
                   class="alert alert-danger">
   
                   <!-- Exige o campo -->
-                  <div *ngIf="usuarioForm.controls.cidade.errors.required">
+                  <div *ngIf="usuarioForm.controls.cidade.errors?.required">
                     Cidade is required.
                   </div>
   
                   <!-- Exige que o campo tenha no mínimo 3 caracteres -->
-                  <div *ngIf="usuarioForm.controls.cidade.errors.minlength">
+                  <div *ngIf="usuarioForm.controls.cidade.errors?.minlength">
                     Cidade must be only 3 characters long.
                   </div>          
             </div>
@@ -193,22 +193,22 @@
                    class="form-control" id="estado" formControlName="estado" >
   
           <!-- Validação do Estado -->
-            <div *ngIf="usuarioForm.controls.estado.invalid && (usuarioForm.controls.estado.dirty
+            <div *ngIf="usuarioForm.controls.estado?.invalid && (usuarioForm.controls.estado.dirty
                   || usuarioForm.controls.estado.touched)"
                   class="alert alert-danger">
   
                   <!-- Exige o campo -->
-                  <div *ngIf="usuarioForm.controls.estado.errors.required">
+                  <div *ngIf="usuarioForm.controls.estado.errors?.required">
                     Estado is required.
                   </div>
   
                   <!-- Exige que o campo tenha no mínimo 2 caracteres -->
-                  <div *ngIf="usuarioForm.controls.estado.errors.minlength">
+                  <div *ngIf="usuarioForm.controls.estado.errors?.minlength">
                     Estado must be at least 2 characters long.
                   </div>
   
                   <!-- Exige que o campo tenha no máximo 2 caracteres -->
-                  <div *ngIf="usuarioForm.controls.estado.errors.maxlength">
+                  <div *ngIf="usuarioForm.controls.estado.errors?.maxlength">
                     Estado must be only 2 characters long.
                   </div>           
             </div>
@@ -224,17 +224,17 @@
                    class="form-control" id="rua" formControlName="rua" />
   
           <!-- Validação da Rua -->
-            <div *ngIf="usuarioForm.controls.rua.invalid && (usuarioForm.controls.rua.dirty
+            <div *ngIf="usuarioForm.controls.rua?.invalid && (usuarioForm.controls.rua.dirty
                   || usuarioForm.controls.rua.touched)"
                   class="alert alert-danger">
   
                   <!-- Exige o campo -->
-                  <div *ngIf="usuarioForm.controls.rua.errors.required">
+                  <div *ngIf="usuarioForm.controls.rua.errors?.required">
                     Rua is required.
                   </div>
   
                   <!-- Exige que o campo tenha no mínimo 3 caracteres -->
-                  <div *ngIf="usuarioForm.controls.rua.errors.minlength">
+                  <div *ngIf="usuarioForm.controls.rua.errors?.minlength">
                     Rua must be only 3 characters long.
                   </div>          
             </div>
@@ -247,17 +247,17 @@
                    class="form-control" id="numero" formControlName="numero" />
           
           <!-- Validação do Número -->
-            <div *ngIf="usuarioForm.controls.numero.invalid && (usuarioForm.controls.numero.dirty
+            <div *ngIf="usuarioForm.controls.numero?.invalid && (usuarioForm.controls.numero.dirty
                   || usuarioForm.controls.numero.touched)"
                   class="alert alert-danger">
                   
                   <!-- Exige o campo -->
-                  <div *ngIf="usuarioForm.controls.numero.errors.required">
+                  <div *ngIf="usuarioForm.controls.numero.errors?.required">
                     Número is required.
                   </div>
   
                   <!-- Exige que o campo tenha no mínimo 3 caracteres -->
-                  <div *ngIf="usuarioForm.controls.numero.errors.minlength">
+                  <div *ngIf="usuarioForm.controls.numero.errors?.minlength">
                     Número must be only 3 characters long.
                   </div>          
             </div>
@@ -267,26 +267,27 @@
           <div class="form-group col-md">
             <label for="bairro">Bairro</label>
             <input placeholder="Bairro" type="text" name="bairro"
-                   class="form-control" id="bairro" formControlName="bairro" />
+            class="form-control" id="bairro" formControlName="bairro" />
     
           <!-- Validação do Bairro--> 
-            <div *ngIf="usuarioForm.controls.bairro.invalid && (usuarioForm.controls.bairro.dirty
+            <div *ngIf="usuarioForm.controls.bairro?.invalid && (usuarioForm.controls.bairro.dirty
                   || usuarioForm.controls.bairro.touched)"
                   class="alert alert-danger">
   
                   <!-- Exige o campo -->
-                  <div *ngIf="usuarioForm.controls.bairro.errors.required">
+                  <div *ngIf="usuarioForm.controls.bairro.errors?.required">
                     Bairro is required.
                   </div>
    
                   <!-- Exige que o campo tenha no mínimo 3 caracteres -->
-                  <div *ngIf="usuarioForm.controls.bairro.errors.minlength">
+                  <div *ngIf="usuarioForm.controls.bairro.errors?.minlength">
                     Bairro must be only 3 characters long.
                   </div>          
-            </div>
+            </div>        
           </div>
         </div>
-        <button [disabled]="usuarioForm.invalid" type="submit" class="btn btn-outline-primary submit">Finalizar cadastro</button>
+      </div>
+        <button (click)="onSave(usuarioForm.value)" type="submit" class="btn btn-outline-primary submit">Finalizar cadastro</button>
       </form>
     </div>
   </div>

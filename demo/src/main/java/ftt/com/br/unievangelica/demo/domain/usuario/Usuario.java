@@ -30,7 +30,7 @@ public class Usuario extends AbstractEntity{
     private String sobrenome;
 
     @NotNull /** Quando temos números é preferível usar NotNull **/
-    @Column (name ="dataNascimento" , nullable = false)
+    @Column (name ="data_nascimento" , nullable = false)
     private Date dataNascimento;
 
     @NotNull
@@ -38,7 +38,7 @@ public class Usuario extends AbstractEntity{
     private String telefone;
 
     @NotNull
-    @Column (name ="cpfCnpj" , nullable = false)
+    @Column (name ="cpf_cnpj" , nullable = false)
     private String cpfCnpj;
 
 
@@ -48,7 +48,5 @@ public class Usuario extends AbstractEntity{
     @OneToOne(cascade = CascadeType.ALL) /** Relação de OneToOne entre Usuário e Endereço **/
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
-
-
 
 }

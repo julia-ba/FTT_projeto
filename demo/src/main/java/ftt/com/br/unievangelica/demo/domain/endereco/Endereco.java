@@ -45,7 +45,7 @@ public class Endereco extends AbstractEntity {
     private String estado;
 
     @JsonIgnore /** Evita loop **/
-    @OneToOne(mappedBy = "endereco" , cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "endereco")
     private Usuario usuario;
 
 }
