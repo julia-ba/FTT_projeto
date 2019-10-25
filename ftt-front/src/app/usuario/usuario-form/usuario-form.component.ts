@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
-import {Usuario} from './usuario';
+import { Usuario } from '../usuario';
 // import Validation from 'src/app/core/util/validation';
 
 @Component({
-  selector: 'app-usuario',
-  templateUrl: './usuario.component.html',
-  styleUrls: ['./usuario.component.css']
+  selector: 'app-usuario-form',
+  templateUrl: './usuario-form.component.html',
+  styleUrls: ['./usuario-form.component.css']
 })
-export class UsuarioComponent implements OnInit {
+export class UsuarioFormComponent implements OnInit {
   usuarioForm: FormGroup;
 
   constructor(private builder: FormBuilder) {

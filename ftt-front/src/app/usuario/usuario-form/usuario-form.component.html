@@ -1,0 +1,293 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1>Cadastro</h1>
+      </div>
+    </div>
+    <div id="form">
+      <form [formGroup]="usuarioForm" (submit)="onSubmit(usuarioForm.value)">
+        <div class="form-group row">
+  
+          <!-- Tabela de nome -->
+          <div class="form-group col-md">
+            <label for="nome">Nome</label>
+            <input placeholder="Primeiro nome" type="text" name="nome"
+                   class="form-control" id="nome" formControlName="nome" />
+  
+            <!-- Validação do nome -->
+              <div *ngIf="usuarioForm.controls.nome.invalid && (usuarioForm.controls.nome.dirty
+                    || usuarioForm.controls.nome.touched)"
+                  class="alert alert-danger">
+  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.nome.errors.required">
+                      Name is required.
+                    </div>
+                  <!-- Exige que o campo tenha no mínimo 3 caracteres -->
+                    <div *ngIf="usuarioForm.controls.nome.errors.minlength">
+                      Name must be at least 3 characters long.
+                    </div>
+              </div>
+          </div>
+  
+          <!-- Campo de sobrenome -->
+          <div class="form-group col-md">
+            <label for="sobrenome">Sobrenome </label>
+            <input placeholder="Sobrenome" type="text" name="sobrenome"
+                   class="form-control" id="sobrenome" formControlName="sobrenome" />
+  
+          <!-- Validação do sobrenome -->
+            <div *ngIf="usuarioForm.controls.sobrenome.invalid && (usuarioForm.controls.sobrenome.dirty
+                  || usuarioForm.controls.sobrenome.touched)"
+                  class="alert alert-danger">
+                  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.sobrenome.errors.required">
+                    Sobrenome is required.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no mínimo 3 caracteres -->
+                  <div *ngIf="usuarioForm.controls.sobrenome.errors.minlength">
+                    Sobrenome must be at least 3 characters long.
+                  </div>          
+              </div>        
+            </div>
+        </div>
+        
+        <div class="form-group row">
+  
+          <!-- Campo de Cpf e Cnpj -->
+          <div class="form-group col-md">
+            <label for="cpfCnpj">CPF/CNPJ</label>
+            <input placeholder="CPF/CNPJ" type="text" name="cpfCnpj"
+                   class="form-control" id="cpfCnpj" formControlName="cpfCnpj" />
+  
+          <!-- Validação do cpfCnpj -->
+              <div *ngIf="usuarioForm.controls.cpfCnpj.invalid && (usuarioForm.controls.cpfCnpj.dirty
+                    || usuarioForm.controls.cpfCnpj.touched)"
+                    class="alert alert-danger">
+  
+                    <!-- Exige o campo -->
+                    <div *ngIf="usuarioForm.controls.cpfCnpj.errors.required">
+                      Cpf ou Cnpj is required.
+                    </div>
+  
+                    <!-- Exige que o campo tenha no mínimo 11 caracteres -->
+                    <div *ngIf="usuarioForm.controls.cpfCnpj.errors.minlength">
+                      Cpf ou Cnpj must be at least 11 characters long.
+                    </div>
+  
+                    <!-- Exige que o campo tenha no máximo 14 caracteres -->
+                    <div *ngIf="usuarioForm.controls.cpfCnpj.errors.maxlength">
+                      Cpf ou Cnpj must be only 14 characters long.
+                    </div>           
+              </div>
+          </div>            
+  
+          <!-- Campo de telefone -->
+          <div class="form-group col-md">
+            <label for="telefone">Telefone</label>
+            <input placeholder="Telefone" type="tel" name="telefone"
+                   class="form-control" id="telefone" formControlName="telefone" />
+  
+          <!-- Validação do telefone -->
+            <div *ngIf="usuarioForm.controls.telefone.invalid && (usuarioForm.controls.telefone.dirty
+                  || usuarioForm.controls.telefone.touched)"
+                  class="alert alert-danger">
+  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.telefone.errors.required">
+                    Telefone is required.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no mínimo 11 caracteres -->
+                  <div *ngIf="usuarioForm.controls.telefone.errors.minlength">
+                    Telefone must be at least 11 characters long.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no máximo 11 caracteres -->
+                  <div *ngIf="usuarioForm.controls.telefone.errors.maxlength">
+                    Telefone must be only 11 characters long.
+                  </div>           
+            </div> 
+          </div> 
+  
+          <!-- Campo da Data de Nascimento -->
+          <div class="form-group col-md">
+            <label for="dataNascimento">Data de nascimento</label>
+            <input placeholder="Data de nascimento"  app-restrict-input="date" type="date"
+                   name="dataNascimento" class="form-control" id="dataNascimento" formControlName="dataNascimento" />
+  
+          <!-- Validação da Data de Nascimento -->
+            <div *ngIf="usuarioForm.controls.dataNascimento.invalid && (usuarioForm.controls.dataNascimento.dirty
+                  || usuarioForm.controls.dataNascimento.touched)"
+                  class="alert alert-danger">
+  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.dataNascimento.errors.required">
+                    Data de Nacimento is required.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no mínimo 10 caracteres -->
+                  <div *ngIf="usuarioForm.controls.dataNascimento.errors.maxlength">
+                    Data de Nascimento must be only 10 characters long.
+                  </div>          
+              </div>
+            </div>
+        </div>
+          
+        <!-- O ENDEREÇO COMEÇA AQUI -->
+  
+        <div class="form-group row">   
+  
+          <!-- Campo do CEP -->
+          <div class="form-group col-md">
+            <label for="cep">CEP</label>
+            <input placeholder="CEP" type="text" name="cep"
+                   class="form-control" id="cep" formControlName="cep" />
+  
+          <!-- Validação do CEP --> 
+            <div *ngIf="usuarioForm.controls.cep.invalid && (usuarioForm.controls.cep.dirty
+                  || usuarioForm.controls.cep.touched)"
+                  class="alert alert-danger">
+  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.cep.errors.required">
+                    CEP is required.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no mínimo 8 caracteres -->
+                  <div *ngIf="usuarioForm.controls.cep.errors.maxlength">
+                    CEP must be only 8 characters long.
+                  </div>          
+            </div>
+          </div>
+  
+          <!-- Campo da Cidade -->
+          <div class="form-group col-md">
+            <label for="cidade">Cidade</label>
+            <input placeholder="Cidade" type="text" name="cidade"
+                   class="form-control" id="cidade" formControlName="cidade" />
+  
+          <!-- Validação da Cidade -->
+            <div *ngIf="usuarioForm.controls.cidade.invalid && (usuarioForm.controls.cidade.dirty
+                  || usuarioForm.controls.cidade.touched)"
+                  class="alert alert-danger">
+  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.cidade.errors.required">
+                    Cidade is required.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no mínimo 3 caracteres -->
+                  <div *ngIf="usuarioForm.controls.cidade.errors.minlength">
+                    Cidade must be only 3 characters long.
+                  </div>          
+            </div>
+          </div> 
+  
+          <!-- Campo do Estado -->
+          <div class="form-group col-md">
+            <label for="estado">Estado</label>
+            <input placeholder="Estado" type="text" name="estado"
+                   class="form-control" id="estado" formControlName="estado" >
+  
+          <!-- Validação do Estado -->
+            <div *ngIf="usuarioForm.controls.estado.invalid && (usuarioForm.controls.estado.dirty
+                  || usuarioForm.controls.estado.touched)"
+                  class="alert alert-danger">
+  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.estado.errors.required">
+                    Estado is required.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no mínimo 2 caracteres -->
+                  <div *ngIf="usuarioForm.controls.estado.errors.minlength">
+                    Estado must be at least 2 characters long.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no máximo 2 caracteres -->
+                  <div *ngIf="usuarioForm.controls.estado.errors.maxlength">
+                    Estado must be only 2 characters long.
+                  </div>           
+            </div>
+          </div>
+        </div>
+  <!-- agora compartilha comigo -->
+        <div class="form-group row">
+  
+          <!-- Campo da Rua -->
+          <div class="form-group col-md-7">
+            <label for="rua">Rua</label>
+            <input placeholder="Rua" type="text" name="rua"
+                   class="form-control" id="rua" formControlName="rua" />
+  
+          <!-- Validação da Rua -->
+            <div *ngIf="usuarioForm.controls.rua.invalid && (usuarioForm.controls.rua.dirty
+                  || usuarioForm.controls.rua.touched)"
+                  class="alert alert-danger">
+  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.rua.errors.required">
+                    Rua is required.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no mínimo 3 caracteres -->
+                  <div *ngIf="usuarioForm.controls.rua.errors.minlength">
+                    Rua must be only 3 characters long.
+                  </div>          
+            </div>
+          </div>
+          
+          <!-- Campo do Número -->
+          <div class="form-group col-md-2">
+            <label for="numero">Número</label>
+            <input placeholder="Número" type="text" name="numero"
+                   class="form-control" id="numero" formControlName="numero" />
+          
+          <!-- Validação do Número -->
+            <div *ngIf="usuarioForm.controls.numero.invalid && (usuarioForm.controls.numero.dirty
+                  || usuarioForm.controls.numero.touched)"
+                  class="alert alert-danger">
+                  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.numero.errors.required">
+                    Número is required.
+                  </div>
+  
+                  <!-- Exige que o campo tenha no mínimo 3 caracteres -->
+                  <div *ngIf="usuarioForm.controls.numero.errors.minlength">
+                    Número must be only 3 characters long.
+                  </div>          
+            </div>
+          </div> 
+  
+          <!-- Campo do Bairro -->
+          <div class="form-group col-md">
+            <label for="bairro">Bairro</label>
+            <input placeholder="Bairro" type="text" name="bairro"
+                   class="form-control" id="bairro" formControlName="bairro" />
+    
+          <!-- Validação do Bairro--> 
+            <div *ngIf="usuarioForm.controls.bairro.invalid && (usuarioForm.controls.bairro.dirty
+                  || usuarioForm.controls.bairro.touched)"
+                  class="alert alert-danger">
+  
+                  <!-- Exige o campo -->
+                  <div *ngIf="usuarioForm.controls.bairro.errors.required">
+                    Bairro is required.
+                  </div>
+   
+                  <!-- Exige que o campo tenha no mínimo 3 caracteres -->
+                  <div *ngIf="usuarioForm.controls.bairro.errors.minlength">
+                    Bairro must be only 3 characters long.
+                  </div>          
+            </div>
+          </div>
+        </div>
+        <button [disabled]="usuarioForm.invalid" type="submit" class="btn btn-outline-primary submit">Finalizar cadastro</button>
+      </form>
+    </div>
+  </div>
+  
