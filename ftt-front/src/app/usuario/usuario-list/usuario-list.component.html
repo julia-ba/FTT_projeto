@@ -1,14 +1,14 @@
 <h1 class="page-title">Lista de Usuários</h1>
 
-<button class="btn btn-primary m-3" routerLink="/usuario/novo">
+<button class="btn btn-primary m-3" [routerLink]="['/usuario/novo']">
   Cadastrar
 </button>
 
-<div *ngIf="!usuarios.length" >
+<div *ngIf="!usuarios?.length" >
   Nenhum item inserido
 </div>
 
-<table *ngIf="usuarios.length" class="table table-bordered">
+<table *ngIf="usuarios?.length" class="table table-bordered">
   <thead>
     <tr>
       <th>id</th>
@@ -28,25 +28,23 @@
   </thead>
   <tbody>
     <tr *ngFor="let usuario of usuarios">
-      <td><button class="btn btn-link"[routerLink]="['/usuario/visualizar', usuario.id]">
+      <td><button class="btn btn-link" [routerLink]="['/usuario/visualizar', usuario.id]">
         {{ usuario.id }}</button></td>
       <td>{{ usuario.nome }}</td>
       <td>{{ usuario.sobrenome }}</td>
       <td>{{ usuario.cpfCnpj }}</td>
       <td>{{ usuario.telefone }}</td>
       <td>{{ usuario.dataNascimento }}</td>
-      <td>{{ usuario.cep }}</td>
-      <td>{{ usuario.cidade }}</td>
-      <td>{{ usuario.estado }}</td>
-      <td>{{ usuario.rua }}</td>
-      <td>{{ usuario.numero }}</td>
-      <td>{{ usuario.bairro }}</td>
-      <td><button class="btn btn-link">{{ usuario.nome }}</button></td>
-      <td>
+      <td>{{ usuario.endereco.cep }}</td>
+      <td>{{ usuario.endereco.cidade }}</td>
+      <td>{{ usuario.endereco.estado }}</td>
+      <td>{{ usuario.endereco.rua }}</td>
+      <td>{{ usuario.endereco.numero }}</td>
+      <td>{{ usuario.endereco.bairro }}</td>
+      <td><button class="btn btn-link">{{ usuario.nome }}</button>
         <button class="btn btn-link" [routerLink]="['/usuario/editar', usuario.id]">
           Editar
         </button>
-
         <button class="btn btn-link" (click)="onDelete(usuario.id)">
           Deletar
         </button>
