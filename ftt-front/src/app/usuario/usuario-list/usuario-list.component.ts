@@ -27,6 +27,9 @@ export class UsuarioListComponent implements OnInit {
     }
 ];
 
+  modalShow = false;
+  usuario = Usuario;
+
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
@@ -34,10 +37,17 @@ export class UsuarioListComponent implements OnInit {
     // .subscribe( usuarios => this.usuarios = usuarios);
   
   }
+
+  onModal(id: number){
+    this.usuario = this.usuario.filter(usuario => usuario.id === id);
+  }
+
   onDelete(id: number) {
     this.usuarioService.deleteById(id)
     .subscribe(() => { 
       console.log("Usuário deletado!!!");
+      //Remove o usuário da lista
+     // this.usuario = this.usuario.filter(usuario => usuario.id !== id);
     });
   }
 }
