@@ -71,16 +71,18 @@
                   <div *ngIf="usuarioForm.controls.cpfCnpj.errors.required">
                     Cpf ou Cnpj is required.
                   </div>
-
-                  <!-- Exige que o campo tenha no mínimo 11 caracteres -->
-                  <div *ngIf="usuarioForm.controls.cpfCnpj.errors.minlength">
-                    Cpf ou Cnpj must be at least 11 characters long.
+                  
+                  <div *ngIf="usuarioForm.controls.cpfCnpj.errors.cpfCnpjError"> 
+                    CPF ou CNPJ inválidos.
                   </div>
 
-                  <!-- Exige que o campo tenha no máximo 14 caracteres -->
-                  <div *ngIf="usuarioForm.controls.cpfCnpj.errors.maxlength">
-                    Cpf ou Cnpj must be only 14 characters long.
-                  </div>           
+                  <div *ngIf="usuarioForm.controls.cpfCnpj.errors.cpfError">
+                    Cpf invalido.
+                  </div>
+
+                  <div *ngIf="usuarioForm.controls.cpfCnpj.errors.cnpjError">
+                    Cnpj inválido.
+                  </div>
             </div>
         </div>            
 

@@ -9,21 +9,21 @@ import { Router } from '@angular/router';
 function validacaoCpfCnpj(control: FormControl){
   const cpfCnpj = control.value
   
-  if(cpfCnpj.length === 14){
-    return validarCPF(cpfCnpj) ? null : {
-      cpfError: {
+  if(cpfCnpj.length === 14){ 
+    return validarCPF(cpfCnpj) ? null : { 
+      cpfError: { //Cpf inválido
         cpfCnpj
       }
     }
   }else if(cpfCnpj.length === 18){
     return validarCnpj(cpfCnpj) ? null : {
-      cnpjError: {
+      cnpjError: { //Cnpj inválido
         cpfCnpj
       }
     }
   }else{
     return {
-      cpfCnpjError:{
+      cpfCnpjError:{//Cpf e Cnpj inválidos
         cpfCnpj  
       }
     }
@@ -31,6 +31,7 @@ function validacaoCpfCnpj(control: FormControl){
 
 }
 
+//Função que valida se o CPF é válido
 function validarCPF(cpf) {
   cpf = cpf.replace(/[^\d]+/g, '');
   if (cpf === '') {
@@ -74,7 +75,7 @@ function validarCPF(cpf) {
 
   return true;
 }
-
+//Função que valida se o CNPJ é válido
 function validarCnpj(cnpj) {
   cnpj = cnpj.replace(/[^\d]+/g, '');
   if (!cnpj || cnpj.length !== 14
@@ -144,7 +145,9 @@ export class UsuarioFormComponent implements OnInit {
       sobrenome: ['', [Validators.required, Validators.minLength(3)]],
       dataNascimento: ['', [Validators.required, Validators.maxLength(10)]],
       telefone: ['', [Validators.required, Validators.pattern(/^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/)]],
-      cpfCnpj: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(18)]],
+      cpfCnpj: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(18),
+        validacaoCpfCnpj
+        ]], 
       endereco: this.builder.group({
         id:[], 
         cep: ['', [Validators.required, Validators.maxLength(8)]],
