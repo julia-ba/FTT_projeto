@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <h1 class="page-title">{{usuario?.nome}}</h1>
+
+    <dl class="row">
+        <dt class="col-sm-3">ID</dt>
+        <dd class="col-sm-9">{{usuario?.id}}</dd>
+
+        <dt class="col-sm-3">Nome</dt>
+        <dd class="col-sm-9">{{usuario?.nome}}</dd>
+
+        <dt class="col-sm-3">Sobrenome</dt>
+        <dd class="col-sm-9">{{usuario?.sobrenome}}</dd>
+
+        <dt class="col-sm-3">CPF/CNPJ</dt>
+        <dd class="col-sm-9">{{usuario?.cpfCnpj}}</dd>
+
+        <dt class="col-sm-3">Telefone</dt>
+        <dd class="col-sm-9">{{usuario?.telefone}}</dd>
+
+        <dt class="col-sm-3">Data de nascimento</dt>
+        <dd class="col-sm-9">{{usuario?.dataNascimento}}</dd>
+
+        <dt class="col-sm-3">CEP</dt>
+        <dd class="col-sm-9">{{usuario?.endereco.cep}}</dd>
+
+        <dt class="col-sm-3">Cidade</dt>
+        <dd class="col-sm-9">{{usuario?.endereco.cidade}}</dd>
+
+        <dt class="col-sm-3">Estado</dt>
+        <dd class="col-sm-9">{{usuario?.endereco.estado}}</dd>
+
+        <dt class="col-sm-3">Rua</dt>
+        <dd class="col-sm-9">{{usuario?.endereco.rua}}</dd>
+
+        <dt class="col-sm-3">Número</dt>
+        <dd class="col-sm-9">{{usuario?.endereco.numero}}</dd>
+
+        <dt class="col-sm-3">Bairro</dt>
+        <dd class="col-sm-9">{{usuario?.endereco.bairro}}</dd>
+    </dl>
+    <button class="btn btn-outline-primary mr-2" [routerLink]="['/usuario']">
+        Lista
+    </button>
+
+    <button class="btn btn-outline-warning mr-2" [routerLink]="['/usuario/editar', usuario.id]">
+        Editar
+    </button>
+
+    <button class="btn btn-outline-danger" (click)="onDelete(usuario.id)">
+        Apagar
+    </button>
+</div>

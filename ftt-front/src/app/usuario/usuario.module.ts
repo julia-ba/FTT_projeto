@@ -7,9 +7,9 @@ import { UsuarioService } from './usuario.service';
 import { UsuarioRoutingModule } from './usuario-routing.module';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 import { UsuarioListComponent } from './usuario-list/usuario-list.component';
-
+import { UsuarioVisualizarComponent } from './usuario-visualizar/usuario-visualizar.component'
 @NgModule({
-  declarations: [ UsuarioListComponent,  UsuarioFormComponent ],
+  declarations: [ UsuarioListComponent,  UsuarioFormComponent, UsuarioVisualizarComponent ],
   imports: [
     CommonModule,
     UsuarioRoutingModule,

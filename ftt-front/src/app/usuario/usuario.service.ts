@@ -28,7 +28,7 @@ import { Usuario } from 'src/app/usuario/usuario';
     }
     save(usuario: Usuario): Observable<Usuario>{
       if(usuario.id){
-        return this.http.put<Usuario>(`${this.url}`, JSON.stringify(usuario), httpOptions);
+        return this.http.put<Usuario>(`${this.url}/${usuario.id}`, JSON.stringify(usuario), httpOptions);
       } else {
         return this.http.post<Usuario>(`${this.url}`, JSON.stringify(usuario),httpOptions);
       }

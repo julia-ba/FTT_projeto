@@ -5,10 +5,10 @@
     </div>
   </div>
   <div id="form">
-    <form [formGroup]="usuarioForm" (submit)="onSubmit(usuarioForm.value)">
+    <form [formGroup]="usuarioForm" (submit)="onSave(usuarioForm.value)">
       <div class="form-group row">
 
-        <!-- Tabela de nome -->
+        <!-- Tabela de nome --> 
         <div class="form-group col-md">
           <label for="nome">Nome</label>
           <input placeholder="Primeiro nome" type="text" name="nome"
@@ -60,7 +60,7 @@
         <div class="form-group col-md">
           <label for="cpfCnpj">CPF/CNPJ</label>
           <input placeholder="CPF/CNPJ" type="text" name="cpfCnpj"
-                 class="form-control" id="cpfCnpj" formControlName="cpfCnpj" />
+                 class="form-control" id="cpfCnpj" formControlName="cpfCnpj"/>
 
         <!-- Validação do cpfCnpj -->
             <div *ngIf="usuarioForm.controls.cpfCnpj.invalid && (usuarioForm.controls.cpfCnpj.dirty
@@ -146,7 +146,7 @@
         <div class="form-group col-md">
           <label for="cep">CEP</label>
           <input placeholder="CEP" type="text" name="cep"
-                 class="form-control" id="cep" formControlName="cep" />
+                 class="form-control" id="cep" formControlName="cep" value="{{usuario?.endereco.cep}}"/>
 
         <!-- Validação do CEP --> 
           <div *ngIf="usuarioForm.controls.endereco.controls.cep?.invalid && (usuarioForm.controls.endereco.controls.cep.dirty
@@ -169,7 +169,7 @@
         <div class="form-group col-md">
           <label for="cidade">Cidade</label>
           <input placeholder="Cidade" type="text" name="cidade"
-                 class="form-control" id="cidade" formControlName="cidade" />
+                 class="form-control" id="cidade" formControlName="cidade" value="{{usuario?.endereco.cidade}}"/>
 
         <!-- Validação da Cidade -->
           <div *ngIf="usuarioForm.controls.endereco.controls.cidade?.invalid && (usuarioForm.controls.endereco.controls.cidade.dirty
@@ -192,7 +192,7 @@
         <div class="form-group col-md">
           <label for="estado">Estado</label>
           <input placeholder="Estado" type="text" name="estado"
-                 class="form-control" id="estado" formControlName="estado" >
+                 class="form-control" id="estado" formControlName="estado"  value="{{usuario?.endereco.estado}}" >
 
         <!-- Validação do Estado -->
           <div *ngIf="usuarioForm.controls.endereco.controls.estado?.invalid && (usuarioForm.controls.endereco.controls.estado.dirty
@@ -223,7 +223,7 @@
         <div class="form-group col-md-7">
           <label for="rua">Rua</label>
           <input placeholder="Rua" type="text" name="rua"
-                 class="form-control" id="rua" formControlName="rua" />
+                 class="form-control" id="rua" formControlName="rua"  value="{{usuario?.endereco.rua}}"/>
 
         <!-- Validação da Rua -->
           <div *ngIf="usuarioForm.controls.endereco.controls.rua?.invalid && (usuarioForm.controls.endereco.controls.rua.dirty
@@ -246,7 +246,7 @@
         <div class="form-group col-md-2">
           <label for="numero">Número</label>
           <input placeholder="Número" type="text" name="numero"
-                 class="form-control" id="numero" formControlName="numero" />
+                 class="form-control" id="numero" formControlName="numero"  value="{{usuario?.endereco.numero}}" />
         
         <!-- Validação do Número -->
           <div *ngIf="usuarioForm.controls.endereco.controls.numero?.invalid && (usuarioForm.controls.endereco.controls.numero.dirty
@@ -269,7 +269,7 @@
         <div class="form-group col-md">
           <label for="bairro">Bairro</label>
           <input placeholder="Bairro" type="text" name="bairro"
-          class="form-control" id="bairro" formControlName="bairro" />
+          class="form-control" id="bairro" formControlName="bairro" value="{{usuario?.endereco.bairro}}"/>
   
         <!-- Validação do Bairro--> 
           <div *ngIf="usuarioForm.controls.endereco.controls.bairro?.invalid && (usuarioForm.controls.endereco.controls.bairro.dirty
@@ -289,8 +289,9 @@
         </div>
       </div>
     </div>
-      <button (click)="onSave(usuarioForm.value)" 
-      type="submit" class="btn btn-outline-primary submit">Finalizar cadastro</button>
+      <button type="submit" class="btn btn-outline-primary mr-2">Finalizar cadastro</button>
+
+      <button class="btn btn-outline-secondary" [routerLink]="['/usuario']">Cancelar</button>
     </form>
   </div>
 </div>

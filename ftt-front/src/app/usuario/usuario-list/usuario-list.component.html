@@ -22,59 +22,26 @@
   </thead>
   <tbody>
     <tr *ngFor="let usuario of usuarios">
-        <td><button class="btn btn-link" [routerLink]="['/usuario/visualizar', usuario.id]">
-          {{ usuario.id }}</button></td>
+        <td>{{ usuario.id }}</td>
         <td>{{ usuario.nome }}</td>
         <td>{{ usuario.sobrenome }}</td>
         <td>{{ usuario.cpfCnpj }}</td>
         <td>{{ usuario.telefone }}</td>
         <td>{{ usuario.dataNascimento }}</td>
-      <td><button class="btn btn-link" (click)="onModal(usuario.id)">Visualizar</button>
-        <button class="btn btn-link" [routerLink]="['/usuario/editar', usuario.id]">
+        <td>
+          <!-- Botão para a página de visualização -->
+        <button class="btn btn-outline-primary mr-1" [routerLink]="['/usuario/visualizar', usuario.id]">
+          Visualizar 
+        </button>
+        <!-- Botão para a página de edição -->
+        <button class="btn btn-outline-warning mr-1" [routerLink]="['/usuario/editar', usuario.id]">
           Editar
         </button>
-        <button class="btn btn-link" (click)="onDelete(usuario.id)">
+        <!-- Botão para apagar um usuário -->
+        <button class="btn btn-outline-danger" (click)="onDelete(usuario.id)" >
           Deletar
         </button>
       </td>
     </tr>
   </tbody>
 </table>
-
-<!-- modal -->
-<ng-template [ngIf]="modalShow"> 
-    <div class="modal" tabindex="-1" role="dialog">
-        
-      <div class="modal-dialog" role="document">
-
-          <div class="modal-content">
-          
-            <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title">Visualizar</h4>
-            
-            <button type="button" class="close" aria-label="Close" 
-                    (click)="modal.dismiss('Cross click')">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            {{usuarioModal.id}} 
-            {{ usuarioModal.nome }}
-            {{ usuarioModal.sobrenome }}
-            {{ usuarioModal.cpfCnpj }}
-            {{ usuarioModal.dataNascimento }}
-            {{ usuarioModal.endereco.cep }} 
-            {{ usuarioModal.endereco.rua }}
-            {{ usuarioModal.endereco.numero }}
-            {{ usuarioModal.endereco.bairro }}
-            {{ usuarioModal.endereco.cidade }}
-            {{ usuarioModal.endereco.estado }}
-          </div>
-          
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salvar</button>
-          </div>
-    </div>
-  </div>
-</div>
-</ng-template>

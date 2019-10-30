@@ -4,7 +4,7 @@ import {FormGroup, Validators, FormBuilder, FormControl} from '@angular/forms';
 import { Usuario } from '../usuario';
 import Validation from 'src/app/core/util/validation';
 import { UsuarioService } from '../usuario.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 function validacaoCpfCnpj(control: FormControl){
   const cpfCnpj = control.value
@@ -132,13 +132,18 @@ function validarCnpj(cnpj) {
 })
 export class UsuarioFormComponent implements OnInit {
   usuarioForm: FormGroup;
+  usuario: Usuario;
 
   constructor(private builder: FormBuilder,
     private usuarioService: UsuarioService,
-    private router: Router) {
+    private router: Router,
+    private activeRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
+    const id = this.activeRoute.snapshot.paramMap.get('id');
+
+    
     this.usuarioForm = this.builder.group({
       id: [],
       nome: ['', [Validators.required, Validators.minLength(3)]],
@@ -158,29 +163,28 @@ export class UsuarioFormComponent implements OnInit {
         estado: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]]   
       })      
     }, {});
-    console.log(this.usuarioForm);
-  }
-  async onSubmit(usuario: Usuario) {
-    if (this.usuarioForm.invalid) {
-      // Valida todos os campos do formulario
-      // Usar dependencia para dar o feedback que tem algo errado no formulario
-    } else {
-      console.log('Usuário salvo!!!');
-      
+    // verifica se tem o id na roda e preeche o formulário com os dados do backend
+    if(id){
+      this.usuarioService.findById(parseInt(id)).subscribe((u: Usuario) => {
+        u.dataNascimento = new Date(u.dataNascimento.split(' ')[0]).toISOString().split('T')[0];
+        this.usuarioForm.patchValue(u);
+      });
     }
+    
   }
-    //Salva dados de usuario
-    onSave(usuario: Usuario){
-      if(this.usuarioForm.invalid){
-        //Valida todos os campos do formulario
-        Validation.allFormFields(this.usuarioForm);
-      }else {
-        this.usuarioService.save(usuario)
-        .subscribe(usuario => {
-          console.log("Usuario salvo!!!");
-  
-          //Redireciona para a lista de usuario --> alterar aq dps da listagem
-          this.router.navigate(['/usuario']); // <--
+  //Salva dados de usuario
+  onSave(usuario: Usuario){
+    console.log(usuario)
+    if(this.usuarioForm.invalid){
+      //Valida todos os campos do formulario
+      Validation.allFormFields(this.usuarioForm);
+    } else {
+      this.usuarioService.save(usuario)
+      .subscribe((usuario: Usuario) => {
+        console.log("Usuario salvo!!!");
+
+        //Redireciona para a lista de (usuario: Usuario) --> alterar aq dps da listagem
+        this.router.navigate(['/usuario']); 
         });
       }
     } 
