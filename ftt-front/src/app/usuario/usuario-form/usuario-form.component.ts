@@ -174,7 +174,6 @@ export class UsuarioFormComponent implements OnInit {
   }
   //Salva dados de usuario
   onSave(usuario: Usuario){
-    console.log(usuario)
     if(this.usuarioForm.invalid){
       //Valida todos os campos do formulario
       Validation.allFormFields(this.usuarioForm);

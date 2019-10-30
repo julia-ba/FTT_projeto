@@ -26,7 +26,7 @@ public abstract class AbstractService<T> implements IService<T> {
         throw new NotFoundException();
     }
 
-    public T save(T object, Errors errors) {
+    public T  save(T object, Errors errors) {
         if (errors.hasErrors()) {
             throw new BadRequestException(errors);
         }
@@ -38,3 +38,4 @@ public abstract class AbstractService<T> implements IService<T> {
     }
 
 }
+//regra de negócios
